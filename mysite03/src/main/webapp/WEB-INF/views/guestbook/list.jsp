@@ -58,7 +58,7 @@
 		</div>
 		<div id="navigation">
 			<ul>
-				<li><a href="">안대혁</a></li>
+				<li><a href="">이성준</a></li>
 				<li><a href="">방명록</a></li>
 				<li><a href="">게시판</a></li>
 			</ul>
