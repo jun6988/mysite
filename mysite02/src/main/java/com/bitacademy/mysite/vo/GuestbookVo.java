@@ -40,5 +40,5 @@ public class GuestbookVo {
 	public String toString() {
 		return "GuestbookVo [no=" + no + ", name=" + name + ", contents=" + contents + ", password=" + password
 				+ ", regDate=" + regDate + "]";
-	}
+	}	
 }

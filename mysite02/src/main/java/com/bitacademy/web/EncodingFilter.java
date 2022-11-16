@@ -11,6 +11,7 @@ import javax.servlet.http.HttpFilter;
 
 public class EncodingFilter extends HttpFilter implements Filter {
     private String encoding = "utf-8";
+    
 	public void init(FilterConfig fConfig) throws ServletException {
 		encoding = fConfig.getInitParameter("encoding");
 	}
