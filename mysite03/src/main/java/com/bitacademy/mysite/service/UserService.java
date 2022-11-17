@@ -20,7 +20,7 @@ public class UserService {
 	}
 
 	public UserVo findUser(Long no) {
-		return userRepository.findByNo(no);
+			return userRepository.findByNo(no);
 	}
 
 	public void updateUser(UserVo userVo) {
