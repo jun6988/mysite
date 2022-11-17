@@ -1,6 +1,5 @@
 package com.bitacademy.mysite.controller;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(HttpSession session, UserVo userVo, Model model)  {
+	public String login(HttpSession session, UserVo userVo, Model model) {
 		UserVo authUser = userService.findUser(userVo);
 		if(authUser == null) {
 			model.addAttribute("email", userVo.getEmail());
