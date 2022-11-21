@@ -19,8 +19,7 @@ public class BoardService {
 	
 	public Map<String, Object> findContentsList(int currentPage){
 		// view의 페이징을 처리하기 위한 데이터의 값 계산
-		int beginPage = 0;
-		int endPage = 0;
+
 		
 		// 리스트 가져오기
 		
