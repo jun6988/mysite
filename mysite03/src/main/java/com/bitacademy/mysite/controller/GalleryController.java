@@ -1,9 +1,13 @@
 package com.bitacademy.mysite.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bitacademy.mysite.service.FileUploadService;
@@ -20,12 +24,17 @@ public class GalleryController {
 	private FileUploadService fileuploadService;
 	
 	@RequestMapping("")
-	public String index() {
+	public String index(Model model) {
+		List<GalleryVo> list = galleryService.getImageList();
+		model.addAttribute("list", list);
+
 		return "gallery/index";
 	}
 	
 	@RequestMapping("/upload")
-	public String upload(GalleryVo galleryVo, MultipartFile multipartFile) {
+	public String upload(
+		GalleryVo galleryVo,
+		@RequestParam("file") MultipartFile multipartFile) {
 		String url = fileuploadService.restore(multipartFile);
 		galleryVo.setUrl(url);
 		

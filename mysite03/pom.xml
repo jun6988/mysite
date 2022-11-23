@@ -53,20 +53,26 @@
 		    <artifactId>spring-jdbc</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
-		
+	
 		<!-- validation -->
-
-
-<dependency>
-
-<groupId>org.hibernate</groupId>
-
-<artifactId>hibernate-validator</artifactId>
-
-<version>6.2.3.Final</version>
-
-</dependency>
+		<dependency>
+		   <groupId>org.hibernate</groupId>
+		   <artifactId>hibernate-validator</artifactId>
+		   <version>6.2.3.Final</version>
+		</dependency>
 				
+		<!-- common fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+						
 		<!-- Apache Common DBCP -->
 		<dependency>
 		    <groupId>commons-dbcp</groupId>
@@ -98,8 +104,8 @@
 		    <groupId>jstl</groupId>
 		    <artifactId>jstl</artifactId>
 		    <version>1.2</version>
-		</dependency>	
-		
+		</dependency>			
+	
 		<!-- Logback -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -110,8 +116,8 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>${logback.version}</version>
-		</dependency>
-	</dependencies>		
+		</dependency>	
+	</dependencies>
 		
 	<build>
 		<finalName>mysite03</finalName>
