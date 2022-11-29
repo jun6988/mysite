@@ -11,9 +11,8 @@ import com.bitacademy.mysite.config.web.MessageResourceConfig;
 import com.bitacademy.mysite.config.web.SecurityConfig;
 
 @Configuration
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy // auto proxy : AOP weaving작업을 할 때 필요한 객체생성
 @ComponentScan({"com.bitacademy.mysite.controller", "com.bitacademy.mysite.exception"})
 @Import({MVCConfig.class, SecurityConfig.class, MessageResourceConfig.class, FileUploadConfig.class})
 public class WebConfig {
 }
-

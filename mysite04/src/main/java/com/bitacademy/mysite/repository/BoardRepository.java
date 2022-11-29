@@ -14,58 +14,49 @@ import com.bitacademy.mysite.vo.BoardVo;
 public class BoardRepository {
 	@Autowired
 	private SqlSession sqlSession;
-
-	public int insert(BoardVo boardVo) {
-		return sqlSession.insert("board.insert", boardVo);
+	
+	// 게시판 목록
+	public List<BoardVo> findAll() {
+		List<BoardVo> result = sqlSession.selectList("board.findAll");
+		
+		return result;
 	}
 
-	public List<BoardVo> findAllByPageAndKeword(String keyword, Integer page, Integer size) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyword", keyword);
-		map.put("startIndex", (page - 1) * size);
-		map.put("size", size);
-
-		return sqlSession.selectList("board.findAllByPageAndKeword", map);
+	// 글 쓰기
+	public void write(BoardVo vo) {
+		sqlSession.insert("board.write", vo);
 	}
 
-	public int update(BoardVo boardVo) {
-		return sqlSession.update("board.update", boardVo);
-	}
-
-	public int delete(Long no, Long userNo) {
-		Map<String, Long> map = new HashMap<String, Long>();
+	// deleteByNoAndUserno
+	public void deleteByNoAndUserno(Long no, Long userno) {
+		Map<String, Object> map = new HashMap<>();
+		
 		map.put("no", no);
-		map.put("userNo", userNo);
-
-		return sqlSession.delete("board.delete", map);
+		map.put("userNo", userno);
+		
+		sqlSession.delete("board.deleteByNoAndUserno" , map);
 	}
 
+	// 글 수정할 정보 불러오기
 	public BoardVo findByNo(Long no) {
-		BoardVo vo = sqlSession.selectOne("board.findByNo", no);
-		return vo;
+		BoardVo result = sqlSession.selectOne("board.findByNo", no);
+
+		return result;
 	}
 
-	public BoardVo findByNoAndUserNo(Long no, Long userNo) {
-		Map<String, Long> map = new HashMap<String, Long>();
-		map.put("no", no);
-		map.put("userNo", userNo);
+	// 글 수정
+	public void update(BoardVo vo) {
+		sqlSession.update("board.update", vo);
 
-		return sqlSession.selectOne("board.findByNoAndUserNo", map);
 	}
 
-	public int updateHit(Long no) {
-		return sqlSession.update("board.updateHit", no);
+	// 조회수 올리기
+	public void addHit(BoardVo vo) {
+		sqlSession.update("board.addHit", vo);
 	}
-
-	public int updateOrderNo(Integer groupNo, Integer orderNo) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("groupNo", groupNo);
-		map.put("orderNo", orderNo);
-
-		return sqlSession.update("board.updateOrederNo", map);
-	}
-
-	public int getTotalCount(String keyword) {
-		return sqlSession.selectOne("board.totalCount", keyword);
+	
+	// 답글
+	public void reply(BoardVo vo) {
+		sqlSession.update("board.reply", vo);
 	}
 }

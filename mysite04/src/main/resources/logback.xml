@@ -27,13 +27,15 @@
 			<MaxFileSize>10MB</MaxFileSize>
 		</triggeringPolicy>
 	</appender>
-
-	<logger name="com.bitacademy.mysite.exception" level="error" additivity="false">
+	
+	<!-- com.bitacademy.mysite.exception 아래 패키지 로그들만  /mysite-logs/exception 파일에만  출력하는 로거 -->
+	<logger name="com.bitacademy.mysite.exception" level="error" additivity="false"> <!-- debug이하가 다나옴 -->
             <appender-ref ref="fileAppender" />
             <appender-ref ref="consoleAppender" />
     </logger>
-	
-	<root level="info">
+    
+	<!-- 루트(글로벌) 로거 -->
+	<root level="info"> <!-- error만 나옴 -->
 		<appender-ref ref="consoleAppender" />
 	</root>
 

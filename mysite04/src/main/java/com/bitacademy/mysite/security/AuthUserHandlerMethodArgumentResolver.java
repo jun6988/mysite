@@ -13,6 +13,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import com.bitacademy.mysite.vo.UserVo;
 
 public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
+
 	@Override
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
 			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
@@ -28,12 +29,12 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 		
 		return session.getAttribute("authUser");
 	}
-	
+
 	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
 		AuthUser authUser = parameter.getParameterAnnotation(AuthUser.class);
-
-		// @AuthUser가 안 붙어 있으면...
+		
+		// @AuthUser가 안붙어 있다면...
 		if(authUser == null) {
 			return false;
 		}
