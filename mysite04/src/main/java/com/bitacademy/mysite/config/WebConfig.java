@@ -13,6 +13,7 @@ import com.bitacademy.mysite.config.web.SecurityConfig;
 @Configuration
 @EnableAspectJAutoProxy
 @ComponentScan({"com.bitacademy.mysite.controller", "com.bitacademy.mysite.exception"})
-@Import({MVCConfig.class, SecurityConfig.class, FileUploadConfig.class, MessageResourceConfig.class})
+@Import({MVCConfig.class, SecurityConfig.class, MessageResourceConfig.class, FileUploadConfig.class})
 public class WebConfig {
 }
+

@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bitacademy.mysite.exception.FileUploadServiceException;
 
 @Service
+@PropertySource("classpath:com/bitacademy/mysite/config/web/fileupload.properties")
 public class FileUploadService {
 
 	@Autowired
@@ -26,8 +28,8 @@ public class FileUploadService {
 			if(multipartFile.isEmpty()) {
 				return url;
 			}
-			
-			File restoreDirectory = new File(env.getProperty("fileupload.resourceMapping"));
+
+			File restoreDirectory = new File(env.getProperty("fileupload.uploadLocation"));
 			if(!restoreDirectory.exists()) {
 				restoreDirectory.mkdirs();
 			}
@@ -42,11 +44,11 @@ public class FileUploadService {
 			System.out.println("################" + fileSize);
 			byte[] data = multipartFile.getBytes();
 			
-			OutputStream os = new FileOutputStream(env.getProperty("fileupload.resourceMapping") + "/" + restoreFilename);
+			OutputStream os = new FileOutputStream(env.getProperty("fileupload.uploadLocation") + "/" + restoreFilename);
 			os.write(data);
 			os.close();
 			
-			url = env.getProperty("fileupload.uploadLocation") + "/" + restoreFilename;
+			url = env.getProperty("fileupload.resourceMapping") + "/" + restoreFilename;
 		} catch (IOException e) {
 			throw new FileUploadServiceException(e.toString());
 		}
