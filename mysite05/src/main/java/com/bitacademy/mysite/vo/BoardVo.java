@@ -4,13 +4,14 @@ public class BoardVo {
 	private Long no;
 	private String title;
 	private String contents;
-	private String regDate;
-	private Integer hit;
+	private Long hit;
+	private String date;
 	private Integer groupNo;
 	private Integer orderNo;
 	private Integer depth;
-	private Long userNo;
 	private String userName;
+	private Long userNo;
+	
 	
 	public Long getNo() {
 		return no;
@@ -30,17 +31,17 @@ public class BoardVo {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getRegDate() {
-		return regDate;
-	}
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
-	}
-	public Integer getHit() {
+	public Long getHit() {
 		return hit;
 	}
-	public void setHit(Integer hit) {
+	public void setHit(Long hit) {
 		this.hit = hit;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 	public Integer getGroupNo() {
 		return groupNo;
@@ -60,22 +61,24 @@ public class BoardVo {
 	public void setDepth(Integer depth) {
 		this.depth = depth;
 	}
-	public Long getUserNo() {
-		return userNo;
-	}
-	public void setUserNo(Long userNo) {
-		this.userNo = userNo;
-	}
 	public String getUserName() {
 		return userName;
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	public Long getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(Long userNo) {
+		this.userNo = userNo;
+	}
+	
+	
 	@Override
 	public String toString() {
-		return "BoardVo [no=" + no + ", title=" + title + ", contents=" + contents + ", regDate=" + regDate + ", hit="
-				+ hit + ", groupNo=" + groupNo + ", orderNo=" + orderNo + ", depth=" + depth + ", userNo=" + userNo
-				+ ", userName=" + userName + "]";
+		return "BoardVo [no=" + no + ", title=" + title + ", contents=" + contents + ", hit=" + hit + ", date=" + date
+				+ ", groupNo=" + groupNo + ", orderNo=" + orderNo + ", depth=" + depth + ", userName=" + userName
+				+ ", userNo=" + userNo + "]";
 	}
 }

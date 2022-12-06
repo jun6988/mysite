@@ -11,20 +11,21 @@ import com.bitacademy.mysite.vo.GuestbookVo;
 @Service
 public class GuestbookService {
 	@Autowired
-	private GuestbookRepository guestbookRepository;
+	GuestbookRepository guestbookRepository;
 	
 	public List<GuestbookVo> getContentsList() {
 		return guestbookRepository.findAll();
 	}
 	
-	public void deleteContents(Long no, String password) {
-		guestbookRepository.deleteByNoAndPassword(no, password);
-	}
-
 	public void addContents(GuestbookVo vo) {
 		System.out.println(vo);
 		guestbookRepository.insert(vo);
+		
+		
 		System.out.println(vo);
 	}
 	
+	public void deleteContents(Long no, String password) {
+		guestbookRepository.deleteByNoAndPassword(no, password);
+	}
 }

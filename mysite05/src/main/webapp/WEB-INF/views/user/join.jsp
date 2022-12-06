@@ -23,7 +23,9 @@
 					method="post"
 					action="${pageContext.request.contextPath }/user/join">
 					
-					<label class="block-label" for="name"><spring:message code="Join.form.label.name"/></label>
+					<label class="block-label" for="name">
+						<spring:message code="Join.form.label.name" text="..."/>
+					</label>
 					<form:input path="name" />					
 					<p style="text-align: left; padding: 2px 0 2px 0; color: red">
 						<spring:hasBindErrors name="userVo">
@@ -39,13 +41,13 @@
 					<form:input path="email" />
 					<input type="button" value="가입 확인">
 					<p style="text-align: left; padding: 2px 0 2px 0; color: red">
-						<form:errors path="email" />
+						<form:errors path="email" />	
 					</p>
 										
 					<label class="block-label">패스워드</label>
 					<form:password path="password" />
 					<p style="text-align: left; padding: 2px 0 2px 0; color: red">
-						<form:errors path="password" />
+						<form:errors path="password" />	
 					</p>
 										
 					<fieldset>

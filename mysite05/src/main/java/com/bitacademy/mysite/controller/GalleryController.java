@@ -22,13 +22,14 @@ public class GalleryController {
 	private GalleryService galleryService;
 	
 	@Autowired
-	private FileUploadService fileuploadService;
+	private FileUploadService fileUploadService;
 	
-	@RequestMapping("")
+	@RequestMapping
 	public String index(Model model) {
 		List<GalleryVo> list = galleryService.getImageList();
 		model.addAttribute("list", list);
-
+		
+		// System.out.println(list);
 		return "gallery/index";
 	}
 	
@@ -37,7 +38,7 @@ public class GalleryController {
 	public String upload(
 		GalleryVo galleryVo,
 		@RequestParam("file") MultipartFile multipartFile) {
-		String url = fileuploadService.restore(multipartFile);
+		String url = fileUploadService.restore(multipartFile);
 		galleryVo.setUrl(url);
 		
 		galleryService.saveImages(galleryVo);
@@ -48,6 +49,7 @@ public class GalleryController {
 	@RequestMapping("/delete/{no}")
 	public String delete(@PathVariable("no") Long no) {
 		galleryService.removeImages(no);
+		
 		return "redirect:/gallery";
-	}	
+	}
 }

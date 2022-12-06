@@ -14,24 +14,37 @@ public class UserRepository {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public boolean update(UserVo vo) {
-		int count = sqlSession.update("user.update", vo);
-		return count == 1;
-	}
-
-	public UserVo findByNo(Long no) {
-		return sqlSession.selectOne("user.findByNo", no);
-	}
-	
+	// 로그인
 	public UserVo findByEmailAndPassword(String email, String password) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("email", email);
 		map.put("password", password);
-		return sqlSession.selectOne("user.findByEmailAndPassword", map);
+		
+		UserVo result = sqlSession.selectOne("user.findByEmailAndPassword", map);
+		
+		return result;
 	}
 	
+	// update할 정보 불러오기
+	public UserVo findByNo(Long no) {
+		UserVo result = sqlSession.selectOne("user.findByNo", no);
+		
+		return result;
+	}
+	
+	
+	// 회원가입
 	public Boolean insert(UserVo vo) {
 		int count = sqlSession.insert("user.insert", vo);
+
+		return count == 1;
+	}
+
+	
+	// 회원정보수정
+	public boolean update(UserVo vo) {
+		int count = sqlSession.update("user.update", vo);
+		
 		return count == 1;
 	}
 }
