@@ -22,14 +22,14 @@ public class ControllerExceptionHandler {
 		}
 		
 		// 500 Error 처리
-		
-		// 1.로깅
+
+		// 로깅
 		StringWriter errors = new StringWriter();
 		e.printStackTrace(new PrintWriter(errors));
 		//System.out.println(errors.toString());
 		Logger.error(errors.toString());
 		
-		// 2.사과 페이지(HTML 응답, 정상종료)
+		// 사과 페이지(HTML 응답, 정상종료)
 		model.addAttribute("exception", errors.toString());
 		return "error/exception";
 	}
